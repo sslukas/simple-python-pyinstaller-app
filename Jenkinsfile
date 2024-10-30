@@ -22,7 +22,7 @@ pipeline {
             }
             post {
                 always {
-                    junit 'test-reports/results.xml'
+                    junit skipPublishingChecks: true, 'test-reports/results.xml'
                 }
             }
         }
