@@ -4,7 +4,7 @@ pipeline {
         skipStagesAfterUnstable()
     }
     environment {
-         MYPATH='/home/slawek/.local/bin'
+         MYPATH="/home/slawek/.local/bin"
     }
     stages {
         stage('Build') {
