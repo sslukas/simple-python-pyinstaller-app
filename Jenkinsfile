@@ -3,6 +3,7 @@ pipeline {
     options {
         skipStagesAfterUnstable()
     }
+    def path="/home/slawek/.local/bin/"
     stages {
         stage('Build') {
             steps {
@@ -12,7 +13,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh '/home/slawek/.local/bin/py.test --junit-xml test-reports/results.xml sources/test_calc.py'
+                sh '${path}py.test --junit-xml test-reports/results.xml sources/test_calc.py'
             }
             post {
                 always {
@@ -22,7 +23,7 @@ pipeline {
         }
         stage('Deliver') { 
             steps {
-                sh "/home/slawek/.local/bin/pyinstaller --onefile sources/add2vals.py" 
+                sh "${path}pyinstaller --onefile sources/add2vals.py" 
             }
             post {
                 success {
